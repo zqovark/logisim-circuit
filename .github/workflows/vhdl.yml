@@ -1,0 +1,23 @@
+name: VHDL
+
+on:
+  push:
+    paths:
+      - "vhdl/**"
+      - ".github/workflows/vhdl.yml"
+  pull_request:
+    paths:
+      - "vhdl/**"
+      - ".github/workflows/vhdl.yml"
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GHDL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+      - name: Run exhaustive ALU tests
+        run: make -C vhdl test

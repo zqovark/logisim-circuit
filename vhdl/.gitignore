@@ -1,0 +1,4 @@
+work-obj*.cf
+tb_alu4
+*.vcd
+*.ghw
